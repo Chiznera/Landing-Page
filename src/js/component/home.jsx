@@ -1,25 +1,51 @@
 import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import Jumbotron from "./jumbotron.jsx";
+import Navbar from "./navbar.jsx";
+import Card from "./card.jsx";
 
 //create your first component
 const Home = () => {
+
+	const cards = [
+		{
+			title: "Cat 1",
+			image: "https://placekitten.com/408/287",
+			description: "one cat"
+		},
+		{
+			title: "Cat 2",
+			image: "https://placekitten.com/408/288",
+			description: "two cat"
+		},
+		{
+			title: "Cat 3",
+			image: "https://placekitten.com/408/289",
+			description: "red cat"
+		},
+		{
+			title: "Cat 4",
+			image: "https://placekitten.com/408/290",
+			description: "blue cat"
+		}
+
+	]
+
 	return (
-		<div>
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<div className="row justify-content-center">
+			<div className="col-8 ">
+				<Navbar />
+				<Jumbotron />
+				<div className="d-flex justify-content-between">
+				{cards.map((card, i) => {
+					return <Card
+					imgsrc={card.image}
+					title={card.title}
+					description={card.description}
+				/>
+				})}
+				</div>
+			</div>
+		</div >
 	);
 };
 
